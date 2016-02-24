@@ -24,7 +24,31 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ng-view></div>
+    <!--<div ng-include src="'app/main/html/main.html'"></div>-->
+     <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container" ng-include src="'app/main/html/header.html'">
+           
+        </div>
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Portfolio Item
+                    <small>Item Subheading</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Portfolio Item Row -->
+        <div data-ng-view class="row"></div>
+        <hr>
+        <!-- Footer -->
+        <footer ng-include src="'app/main/html/footer.html'" include-replace></footer>
+    </div>
+    <!--<div ng-view></div>-->
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->

@@ -1,0 +1,18 @@
+<h1>Best 20 </h1>
+
+<div class="row" data-ng-repeat="category in c.response">
+	<h2>{{category.title}}<h2>
+	<div class="col-sm-8">
+		<img data-ng-src="{{category.urlPoster}}" class="img-polaroid"/>
+	</div>
+	<div class="col-sm-4">
+		<span>
+			<p>{{'Rating: ' + category.rating}}</p>
+		</span>
+		<span>
+			<p>Genres: <label data-ng-repeat="genre in category.genres">{{genre}}</label></p>
+		</span>
+		<span><p>Countries: <label data-ng-repeat="genre in category.countries">{{genre}}</label></p></span>
+		<span><p>{{}}</p></span>
+	</div>
+</div>
