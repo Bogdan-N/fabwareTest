@@ -4,6 +4,9 @@
 	<h2>{{category.title}}<h2>
 	<div class="col-sm-8">
 		<img data-ng-src="{{category.urlPoster}}" class="img-polaroid"/>
+		<div>
+			<popup-modal index="category.idIMDB"></popup-modal>
+		</div>
 	</div>
 	<div class="col-sm-4">
 		<span>
@@ -12,7 +15,17 @@
 		<span>
 			<p>Genres: <label data-ng-repeat="genre in category.genres">{{genre}}</label></p>
 		</span>
-		<span><p>Countries: <label data-ng-repeat="genre in category.countries">{{genre}}</label></p></span>
-		<span><p>{{}}</p></span>
+		<span>
+			<p>Countries: <label data-ng-repeat="country in category.countries">{{country}}</label></p>
+		</span>
+		<span>
+			Directors: 
+				<div data-ng-repeat="director in category.directors">
+					<a ng-href="http://www.imdb.com/name/{{director.nameId}}" target="_blank">{{director.name}}</a>
+				</div>
+		</span>
+		<span>
+			<p>Year: <label>{{category.year}}</label></p>
+		</span>
 	</div>
 </div>
