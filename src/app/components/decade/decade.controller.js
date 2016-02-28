@@ -1,7 +1,8 @@
 (function(){
 
 	angular.module('fabwareTest.decade')
-	.controller('decadeController', ['filmsListResource', 'createTableService', function(filmsListResource, createTableService){
+	.controller('decadeController', ['filmsListResource', 'createTableService',
+	 function(filmsListResource, createTableService){
 		decadeController = Class.extend({
 			init: function(){
 

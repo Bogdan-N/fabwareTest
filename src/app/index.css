@@ -4,3 +4,6 @@
 label {
 	margin-right: 10px
 }
+.selected{
+	color: red;
+}
