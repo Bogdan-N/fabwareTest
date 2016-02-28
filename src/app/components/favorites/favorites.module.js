@@ -4,7 +4,8 @@
 	.config(['$routeProvider', function($routeProvider){
 		$routeProvider
 		.when('/favorites', {
-			templateUrl: 'app/components/favorites/favorites.html'
+			templateUrl: 'app/components/favorites/favorites.html',
+			controller: 'favoritesController as c'
 		})
 	}])
 })();

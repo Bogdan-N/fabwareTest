@@ -1,7 +1,8 @@
 (function(){
 
 	angular.module('fabwareTest.best')
-	.controller('bestController', ['$http', 'filmsListResource', function($http, filmsListResource){
+	.controller('bestController', ['localestorageWrapper',
+	 function(localestorageWrapper){
 
 
 		var bestController = Class.extend({
@@ -10,22 +11,42 @@
 			},
 
 			getFilmsList: function(){
-				filmsListResource.getList()
-				.then(function(response){
-					 this.response = response.data.data.movies;
-					 return response;
-				}.bind(this));
-
+				this.response = localestorageWrapper.getDataArray('movies');
+			},
+			
+			toggleFavorite: function(event, favoriteMovie){
+				
+				heardIconWrap = angular.element(event.currentTarget);
+				heardIconWrap.hasClass('selected') ? 
+				this.deleteSelected(heardIconWrap, favoriteMovie) : this.addAsSelected(heardIconWrap, favoriteMovie);
+				
 			},
 
-			selectAsFavorite: function(event, favoriteMovie){
-				alert(favoriteMovie);
-				localStorage.setItem(favoriteMovie.title, JSON.stringify(favoriteMovie));
-				var heardIconWrap = angular.element(event.currentTarget);
+			addAsSelected: function(icon, movie){
+				//initialize array of favorite movies if it not exist
+				if(!localStorage.getItem('myFavorites')){
+					var arr = [];
+					arr.push(movie);
+					localStorage.setItem('myFavorites', JSON.stringify(arr));
+				} else {
+					var selectedMovies = localestorageWrapper.getDataArray('myFavorites');
+					selectedMovies.push(movie);
+					localStorage.setItem('myFavorites', JSON.stringify(selectedMovies));
+				}
+				icon.addClass('selected');
+				
+			},
 
-					heardIconWrap.hasClass('selected') ? 
-					heardIconWrap.removeClass('selected') : heardIconWrap.addClass('selected');
-					//localStorage.clear();
+			deleteSelected: function(icon, movie){
+				icon.removeClass('selected');
+				var selectedMovies = localestorageWrapper.getDataArray('myFavorites');
+				for(var i = 0; i < selectedMovies.length; ++i){
+					if(selectedMovies[i].idIMDB === movie.idIMDB){
+						selectedMovies.splice(i, 1);
+					}
+				}
+				localStorage.setItem('myFavorites', JSON.stringify(selectedMovies));
+				//delete localStorage[movie.title];
 			}
 
 		})

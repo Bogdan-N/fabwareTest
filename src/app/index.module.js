@@ -13,7 +13,8 @@
   function routeConfig($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'app/main/html/content.html'
+        templateUrl: 'app/main/html/content.html',
+        controller: 'mainController as m'
       })
       .otherwise({
         redirectTo: '/'

@@ -1,8 +1,8 @@
 (function(){
 
 	angular.module('fabwareTest.decade')
-	.controller('decadeController', ['filmsListResource', 'createTableService',
-	 function(filmsListResource, createTableService){
+	.controller('decadeController', ['localestorageWrapper', 'createTableService',
+	 function(localestorageWrapper, createTableService){
 		decadeController = Class.extend({
 			init: function(){
 
@@ -10,16 +10,12 @@
 			},
 
 			getFilmsInfo: function(){
-				filmsListResource.getList()
-				.then(function(response){
-					var response = response.data.data.movies;
-					var years = response.map(function(movie){
-						return movie.year - (movie.year % 10);
-					});
-					
-					createTableService.initTable(years);
-
-				}.bind(this));
+				var movies = localestorageWrapper.getDataArray('movies');
+				var years = movies.map(function(movie){
+					return movie.year - (movie.year % 10);
+				});
+				
+				createTableService.initTable(years);
 			}
 			
 		})

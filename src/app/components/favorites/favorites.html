@@ -1,1 +1,31 @@
 <p>Favorites will be here</p>
+<div class="row" data-ng-repeat="movie in c.movies">
+	<h2>{{movie.title}}<h2>
+	<div class="col-sm-8 posterBlock">
+		<img data-ng-src="{{movie.urlPoster}}" class="img-polaroid"/>
+		<div>
+			<popup-modal index="movie.idIMDB"></popup-modal>
+			<span><i class="glyphicon glyphicon-heart" data-ng-click="c.toggleFavorite($event, movie)"></i></span>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<span>
+			<p>{{'Rating: ' + movie.rating}}</p>
+		</span>
+		<span>
+			<p>Genres: <label data-ng-repeat="genre in movie.genres">{{genre}}</label></p>
+		</span>
+		<span>
+			<p>Countries: <label data-ng-repeat="country in movie.countries">{{country}}</label></p>
+		</span>
+		<span>
+			Directors: 
+				<div data-ng-repeat="director in movie.directors">
+					<a ng-href="http://www.imdb.com/name/{{director.nameId}}" target="_blank">{{director.name}}</a>
+				</div>
+		</span>
+		<span>
+			<p>Year: <label>{{movie.year}}</label></p>
+		</span>
+	</div>
+</div>

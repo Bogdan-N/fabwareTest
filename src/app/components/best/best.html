@@ -6,7 +6,7 @@
 		<img data-ng-src="{{category.urlPoster}}" class="img-polaroid"/>
 		<div>
 			<popup-modal index="category.idIMDB"></popup-modal>
-			<span><i class="glyphicon glyphicon-heart" data-ng-click="c.selectAsFavorite($event,category)"></i></span>
+			<span><i class="glyphicon glyphicon-heart" data-ng-click="c.toggleFavorite($event,category)"></i></span>
 		</div>
 	</div>
 	<div class="col-sm-4">
