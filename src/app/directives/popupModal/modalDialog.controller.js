@@ -4,9 +4,13 @@
 		var modalController = Class.extend({
 
 			init: function(){
-				this.text = modalBridge.getTrailerId();
+				this.configLink();
 			},
 
+			configLink: function(){
+				var link = modalBridge.getTrailerLink();
+				this.trailerLink = link + '/imdb/embed?format=SD';
+			}
 
 		})
 

@@ -1,11 +1,11 @@
-<p>Favorites will be here</p>
+<h3 data-ng-show="c.movies.length === 0">Favorites will be here. No films are selected yet!</h3>
 <div class="row" data-ng-repeat="movie in c.movies">
 	<h2>{{movie.title}}<h2>
 	<div class="col-sm-8 posterBlock">
 		<img data-ng-src="{{movie.urlPoster}}" class="img-polaroid"/>
 		<div>
 			<popup-modal index="movie.idIMDB"></popup-modal>
-			<span><i class="glyphicon glyphicon-heart" data-ng-click="c.toggleFavorite($event, movie)"></i></span>
+			<span><i class="glyphicon glyphicon-remove" data-ng-click="c.deleteFavorite($event, movie)"></i></span>
 		</div>
 	</div>
 	<div class="col-sm-4">

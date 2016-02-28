@@ -5,11 +5,11 @@
 			this.trailerId = '';
 		};
 
-		modalBridge.prototype.setTrailerId = function(trailerId) {
+		modalBridge.prototype.setTrailerLink = function(trailerId) {
 			this.trailerId = trailerId;
 		};
 
-		modalBridge.prototype.getTrailerId = function() {
+		modalBridge.prototype.getTrailerLink = function() {
 			return this.trailerId;
 		};
 

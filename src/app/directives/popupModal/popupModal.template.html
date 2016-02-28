@@ -1,13 +1,7 @@
  <div class="modal-header">
-    <h3 class="modal-title">I'm a modal!</h3>
+    <h3 class="modal-title">{{m.trailerLink}}</h3>
     
 </div>
 <div class="modal-body">
-    <!--<video src="http://www.imdb.com/video/imdb/vi1245295897"></video>-->
-    <!--<data-ng-bind-html="m.text"></data-ng-bind-html>-->
-    <OBJECT width='540' height='230'><PARAM name='movie' value='http://tr.kinopoisk.ru/js/jw/player-licensed.swf'></PARAM><PARAM name='wmode' value='transparent'></PARAM><PARAM name='allowFullScreen' value='true'></PARAM><PARAM name='flashVars' value='image=http://tr.kinopoisk.ru/4134/3_6555.jpg&logo=http://www.kinopoisk.ru/images/tlogo.png&http://www.kinopoisk.ru/level/16/film/4134/t/6555/&file=http://www.kinopoisk.ru/gettrailer.php%3Ftrid%3D6555%26film%3D4134%26tid%3Dkinopoisk.ru-Hackers-23063.mov&skin=http://tr.kinopoisk.ru/js/jw/overlay.swf&controlbar=over&frontcolor=ffffff&lightcolor=ff6600&stretching=unified'></PARAM><EMBED src='http://tr.kinopoisk.ru/js/jw/player-licensed.swf' type='application/x-shockwave-flash' wmode='transparent' width='540' height='230' allowFullScreen='true' flashVars='image=http://tr.kinopoisk.ru/4134/3_6555.jpg&logo=http://www.kinopoisk.ru/images/tlogo.png&http://www.kinopoisk.ru/level/16/film/4134/t/6555/&file=http://www.kinopoisk.ru/gettrailer.php%3Ftrid%3D6555%26film%3D4134%26tid%3Dkinopoisk.ru-Hackers-23063.mov&skin=http://tr.kinopoisk.ru/js/jw/overlay.swf&controlbar=over&frontcolor=ffffff&lightcolor=ff6600&stretching=unified'></EMBED></OBJECT>
-</div>
-<div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    <embed ng-src="{{m.trailerLink | trusted}}"></embed>
 </div>

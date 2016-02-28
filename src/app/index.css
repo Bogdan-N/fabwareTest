@@ -7,3 +7,7 @@ label {
 .selected{
 	color: red;
 }
+embed {
+	width: 875px;
+	height: 520px;
+}

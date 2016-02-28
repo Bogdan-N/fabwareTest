@@ -7,7 +7,7 @@
 
   angular
     .module('fabwareTest', ['fabwareTest.common', 'ngRoute', 'ui.bootstrap', 'ui.bootstrap.modal','toastr', 'fabwareTest.best',
-    	'fabwareTest.decade', 'fabwareTest.favorites',])
+    	'fabwareTest.decade', 'fabwareTest.favorites', 'ngSanitize'])
     .config(routeConfig);
 
   function routeConfig($routeProvider) {

@@ -8,10 +8,21 @@
 		var bestController = Class.extend({
 			init: function(){
 				this.getFilmsList();
+
 			},
 
 			getFilmsList: function(){
-				this.response = localestorageWrapper.getDataArray('movies');
+				var movies = localestorageWrapper.getDataArray('movies');
+				var favoriteFilms = localestorageWrapper.getDataArray('myFavorites');
+				// this ugliness need to show selected films on 20 best page
+				for(var i = 0; i < favoriteFilms.length; ++i){
+					for(var j = 0; j < movies.length; ++j){
+						if(favoriteFilms[i].idIMDB === movies[j].idIMDB){
+							movies[j].favoriteSelected = true;
+						}
+					}
+				}
+				this.categories = movies;
 			},
 			
 			toggleFavorite: function(event, favoriteMovie){
@@ -29,24 +40,14 @@
 					arr.push(movie);
 					localStorage.setItem('myFavorites', JSON.stringify(arr));
 				} else {
-					var selectedMovies = localestorageWrapper.getDataArray('myFavorites');
-					selectedMovies.push(movie);
-					localStorage.setItem('myFavorites', JSON.stringify(selectedMovies));
+					localestorageWrapper.setData('myFavorites', movie);
 				}
-				icon.addClass('selected');
-				
+				icon.addClass('selected');				
 			},
 
 			deleteSelected: function(icon, movie){
+				localestorageWrapper.deleteFromKey('myFavorites', movie);
 				icon.removeClass('selected');
-				var selectedMovies = localestorageWrapper.getDataArray('myFavorites');
-				for(var i = 0; i < selectedMovies.length; ++i){
-					if(selectedMovies[i].idIMDB === movie.idIMDB){
-						selectedMovies.splice(i, 1);
-					}
-				}
-				localStorage.setItem('myFavorites', JSON.stringify(selectedMovies));
-				//delete localStorage[movie.title];
 			}
 
 		})
